@@ -12,8 +12,8 @@ const userId = 'id-' + Date.now();
 
 let sendMessage = () => {
 
-    //let message = document.getElementById("message").value.trim();
-    let message = "10/10/2020";
+    let message = document.getElementById("message").value.trim();
+    //let message = "10/10/2020";
 
     const params = {
         botAlias: botAlias,
