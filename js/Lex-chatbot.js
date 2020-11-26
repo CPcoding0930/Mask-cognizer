@@ -13,8 +13,20 @@ const userId = 'id-' + Date.now();
 let sendMessage = () => {
 
     let message = document.getElementById("message").value.trim();
+    let chatRoom = document.getElementsByClassName("chats")[0];
+    let divOwnChatStruct = document.createElement('div');
+    divOwnChatStruct.className = "chat-body";
+    let divOwnChatContent = document.createElement('div');
+    divOwnChatContent.className = "chat-content";
+    let pOwnChatContent = document.createElement('p');
+    pOwnChatContent.innerText = message;
+    divOwnChatContent.appendChild(pOwnChatContent);
+    divOwnChatStruct.appendChild(divOwnChatContent);
+    chatRoom.appendChild(divOwnChatStruct);
+    document.getElementById("message").value = "";
     //let message = "10/10/2020";
 
+    console.log(message);
     const params = {
         botAlias: botAlias,
         botName: botName,
@@ -30,7 +42,19 @@ let sendMessage = () => {
         }
         if (data) {
             sessionAttributes = data.sessionAttributes;
-            console.log(data.message);
+            let divBotRespStruct = document.createElement("div");
+            divBotRespStruct.className = "chat chat-left";
+            let divBotRespBody = document.createElement("div");
+            divBotRespBody.className = "chat-body";
+            let divBotRespContent = document.createElement("div");
+            divBotRespContent.className = "chat-content";
+            let pBotRespContent = document.createElement("p");
+            pBotRespContent.innerText = data.message;
+            divBotRespContent.appendChild(pBotRespContent);
+            divBotRespBody.appendChild(divBotRespContent);
+            divBotRespStruct.appendChild(divBotRespBody);
+            chatRoom.appendChild(divBotRespStruct);
+            //console.log(data.message);
         }
 
     });
