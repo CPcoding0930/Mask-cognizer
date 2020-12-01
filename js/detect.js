@@ -42,11 +42,12 @@ let anchorGenerator = (featureMapSizes, anchorSizes, anchorRatios) => {
 let detectWebCam = () => {
     detect(webcamElement).then((results) => {
         console.log(results);
-        canvas.width = webcamElement.width;
+        canvas.width = webcamElement.width + 1000;
         canvas.height = webcamElement.height;
+        console.log(webcamElement.width + " " + webcamElement.height);
         ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(webcamElement, 0, 0);
+        ctx.drawImage(webcamElement, 0, 0, webcamElement.width, webcamElement.height);
         for (bboxInfo of results) {
             bbox = bboxInfo[0];
             classID = bboxInfo[1];

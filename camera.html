@@ -14,42 +14,74 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <!-- My css file -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Mask Cognizer</title>
 </head>
 
 <body>
+
+
     <section id="Camera">
-        <div class="container">
+        <div class="container border">
             <div class="row">
-                <div class="col-md-6 col-ms-6  col-6 text-left">
-                    <a href="./index.html"><i class="fas fa-home"></i></a>
+                <div class="col-md-9 col-ms-9  col-7 text-left">
+                    <i class="fas fa-record-vinyl" style="color: darkred;"></i>
                 </div>
 
-                <div class="col-md-6 col-ms-6 col-6 text-right">
+                <div class="col-md-2 col-ms-2 col-3 text-right ">
                     <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="col-md-1 col-ms-1 col-2 text-left">
+                    <a href="./index.html"><i class="fas fa-home"></i></a>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12 col-ms-12 col-12 text-center">
-                    <div class="rectangle">
-                        <video id="webcam" autoplay width="1080" height="720" style="display: none;"></video>
-                        <canvas id="detect_result" width="1080" height="720"></canvas>
+                    <div style="margin-bottom: 50px;">
+                        <video id="webcam" autoplay width="854" height="480" style="display: none;"></video>
+                        <canvas id="detect_result" width="854" height="480" ></canvas>
                     </div>
                 </div>
             </div>
-            <audio id="audioSorceBase64" autoplay src=""></audio>
+
+
+            <div class="row">
+                <div class="col-md-12 col-ms-12 col-12 text-center">
+                    <audio id="audioSorceBase64" controls autoplay
+                    src=""></audio>
+                </div>
+            </div>
         </div>
     </section>
 
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
     <script src="js/detect.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+    <script src="js/Lex-chatbot.js"></script>
+    <script src="js/SpeechRecognitionAPI.js"></script>
     <script src="js/TextToSpeech.js"></script>
-    <script>
-        const webcamElement = document.getElementById('webcam');
 
-        let setupWebcam = () => {
+    <script>
+        //(Chatbot)
+        //sendMessage(); <-  will get html DOM (id: message) to show the chatbot response result
+        //
+        // Speech To Text (use Web API)
+        // start recording <- click HTML DOM(class: btn-speech-to-text-start)
+        // stop recording <- click HTML DOM(class: btn-speech-to-text-stop)
+        // will show result in HTML DOM (class: message)
+        //
+        //(Text To Speech)
+        //textToSpeech(TextValue, ResultHTMLDOM);
+        //textToSpeech("Hello", document.getElementById('audioSorceBase64'));
+        //speechMessage(speectBase64Format);
+
+        const webcamElement = document.getElementById('webcam');
+        
+        let setupWebcam = function () {
             return new Promise((resolve, reject) => {
                 const navigatorAny = navigator;
                 navigator.getUserMedia = navigator.getUserMedia ||
@@ -73,7 +105,7 @@
         }
 
 
-        let setup = async () => {
+        async function setup() {
             await loadModel();
             setupWebcam().then(
                 () => {
@@ -87,14 +119,11 @@
         setup();
     </script>
 
-
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
+    <script>
+        var can = document.getElementById('canvas');
+        can.height = window.innerHeight;
+        can.width = can.height * (16/9);
+    </script>
 </body>
 
 </html>

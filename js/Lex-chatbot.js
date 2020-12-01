@@ -49,7 +49,7 @@ let sendMessage = () => {
             let divBotRespContent = document.createElement("div");
             divBotRespContent.className = "chat-content";
             let pBotRespContent = document.createElement("p");
-            pBotRespContent.innerText = data.message;
+            pBotRespContent.innerHTML = data.message;
             divBotRespContent.appendChild(pBotRespContent);
             divBotRespBody.appendChild(divBotRespContent);
             divBotRespStruct.appendChild(divBotRespBody);

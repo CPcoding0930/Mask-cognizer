@@ -24,11 +24,11 @@ class SpeechRecongnitionAPI {
 window.onload = () => {
 
     let speechToText = new SpeechRecongnitionAPI({
-        textOutput: document.querySelector(".message")
+        textOutput: document.querySelector(".input-message")
     });
 
     document.querySelector(".btn-speech-to-text").addEventListener("click", () => {
-        
+
         let voiceElement = document.querySelector(".btn-speech-to-text");
 
         if (voiceElement.id === "btn-speech-to-text-start") {
@@ -41,4 +41,3 @@ window.onload = () => {
     });
 
 }
-
