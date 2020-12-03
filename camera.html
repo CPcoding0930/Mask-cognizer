@@ -48,9 +48,13 @@
 
             <div class="row">
                 <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-                    <div style="margin-bottom: 50px;">
-                        <video id="webcam" autoplay width="854" height="480" style="display: none;"></video>
-                        <canvas id="detect_result" width="854" height="480" ></canvas>
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-auto" style="margin-bottom: 50px;">
+                            <video id="webcam" autoplay width="854" height="480" style="display: none;"></video>
+                            <canvas id="detect_result" width="854" height="480" style="display: none;" ></canvas>
+                            <img id="resultImage" src="" style="max-width: 100%; max-height: 100%;">
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -101,7 +105,7 @@
                     navigatorAny.msGetUserMedia;
                 if (navigator.getUserMedia) {
                     navigator.getUserMedia({
-                        video: true
+                        video: {width:9999}
                     },
                         (stream) => {
                             webcamElement.srcObject = stream;
@@ -129,12 +133,6 @@
             )
         }
         setup();
-    </script>
-
-    <script>
-        var can = document.getElementById('canvas');
-        can.height = window.innerHeight;
-        can.width = can.height * (16/9);
     </script>
 
     <script>

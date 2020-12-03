@@ -1,4 +1,5 @@
 const canvas = document.getElementById('detect_result');
+const imgResult = document.getElementById('resultImage');
 
 let anchorGenerator = (featureMapSizes, anchorSizes, anchorRatios) => {
     let anchorBBoxes = [];
@@ -47,7 +48,8 @@ let detectWebCam = () => {
         console.log(webcamElement.width + " " + webcamElement.height);
         ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(webcamElement, 0, 0, webcamElement.width, webcamElement.height);
+        
+        ctx.drawImage(webcamElement, 0, 0, canvas.width, canvas.height );
         for (bboxInfo of results) {
             bbox = bboxInfo[0];
             classID = bboxInfo[1];
@@ -75,6 +77,8 @@ let detectWebCam = () => {
             let content = classID + " " + score.toFixed(2);
             ctx.fillText(content, bbox[0], bbox[1] < 20 ? bbox[1] + 30 : bbox[1] - 5);
         }
+        var canvasBase64 = canvas.toDataURL();
+        imgResult.src = canvasBase64;
     })
     setTimeout(function () {
         detectWebCam();
