@@ -4,7 +4,7 @@ let textToSpeech = (textValue, resultElement) => {
     var params = {
         text: textValue
     };
-
+    console.log(resultElement);
     http.open("POST", url, true);
     http.setRequestHeader('Content-type', 'application/json');
     //http.setRequestHeader('x-api-key', 'q6ylhtfXAK1vNqAxGNW5B6wovT0uOQqE15SwCfTQ');
@@ -16,6 +16,11 @@ let textToSpeech = (textValue, resultElement) => {
         }
     }
     http.send(JSON.stringify(params));
+}
+
+let textToSpeechConverter = (buttonElem) =>{
+    let text = buttonElem.parentNode.children[0].innerText;
+    textToSpeech(text, document.getElementById('speechBase64'));
 }
 
 

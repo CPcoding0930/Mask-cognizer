@@ -18,14 +18,14 @@
 
   <body>
     <section id="Setting">
-        <div class="container border">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6 col-ms-6  col-6 text-left">
                     <a href="./index.html"><i class="fas fa-home"></i></a>
                 </div>
 
                 <div class="col-md-6 col-ms-6 col-6 text-right">
-                    <i class="fas fa-question-circle"></i>
+                    <a href="#" id="btnShow"><i class="fas fa-question-circle"></i></a>
                 </div>
             </div>
 
@@ -41,13 +41,13 @@
                         <label for="inputMode"><h6>MODE:</h6></label>
                     </div>
                     <div class="form-group col-md-6 col-ms-6 col-6">
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="inputMode1" name="customRadio" class="custom-control-input" required>
+                        <div class="custom-control custom-radio">   
+                            <input type="radio" id="inputMode1" name="customRadio" class="custom-control-input" value="Normal" required>
                             <label class="custom-control-label" for="inputMode1">Normal</label>
                         </div>
                         <p></p>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="inputMode2" name="customRadio" class="custom-control-input" required>
+                            <input type="radio" id="inputMode2" name="customRadio" class="custom-control-input" value="Elder" required>
                             <label class="custom-control-label" for="inputMode2">Elder</label>
                             <div class="invalid-feedback">Please choose your prefer.</div>
                         </div>
@@ -68,11 +68,11 @@
 
 
                 <div class="form-row">
-                    <div class="col-md-6 col-ms-6 col-6"></div>
-                    <div class="col-md-3 col-ms-3 col-3 text-center" id="settingBtn">
+                    <div class="col-md-6 col-sm-2 col-0"></div>
+                    <div class="col-md-3 col-sm-5 col-6 text-center" id="settingBtn">
                         <button type="reset" class="btn optionBtn">Default</button>
                     </div>
-                    <div class="col-md-3 col-ms-3 col-3 text-center" id="settingBtn">
+                    <div class="col-md-3 col-sm-5 col-6 text-center" id="settingBtn">
                         <button type="submit" class="btn optionBtn">Save</button>
                     </div>
                 </div>
@@ -89,7 +89,9 @@
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-  
+    
+    
+    <script src="js/modeChange.js"></script>
 
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -111,6 +113,17 @@
           }, false);
         })();
     </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#btnShow').click(function(){
+                window.open("pdf/UserManual.pdf", "width=500,height=500,top=100,left=500")
+            }); 
+        });
+    </script>
+
+
+
 
 
 </body>

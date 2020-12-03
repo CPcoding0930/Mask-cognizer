@@ -8,7 +8,9 @@ class SpeechRecongnitionAPI {
         this.speechAPI.onresult = (event) => {
             let resultIndex = event.resultIndex;
             let translationScript = event.results[resultIndex][0].transcript;
-            this.result.value = translationScript;
+            (sessionStorage.getItem("mode") == "Elder")?
+                sendElderMessage(translationScript):
+                this.result.value = translationScript;
         }
     }
 
@@ -23,6 +25,7 @@ class SpeechRecongnitionAPI {
 
 window.onload = () => {
 
+
     let speechToText = new SpeechRecongnitionAPI({
         textOutput: document.querySelector(".input-message")
     });
@@ -30,7 +33,6 @@ window.onload = () => {
     document.querySelector(".btn-speech-to-text").addEventListener("click", () => {
 
         let voiceElement = document.querySelector(".btn-speech-to-text");
-
         if (voiceElement.id === "btn-speech-to-text-start") {
             speechToText.start();
             voiceElement.id = "btn-speech-to-text-end";
@@ -39,5 +41,20 @@ window.onload = () => {
             voiceElement.id = "btn-speech-to-text-start";
         }
     });
+
+    console.log(sessionStorage.getItem("mode"));
+    if(sessionStorage.getItem("mode") == "Elder"){
+        document.querySelector(".btn-elder-speech-to-text").addEventListener("click", () => {
+            console.log("click");
+            let voiceElement = document.querySelector(".btn-elder-speech-to-text");
+            if (voiceElement.id === "btn-elder-speech-to-text-start") {
+                speechToText.start();
+                voiceElement.id = "btn-elder-speech-to-text-end";
+            } else {
+                speechToText.stop();
+                voiceElement.id = "btn-elder-speech-to-text-start";
+            }
+        });
+    }
 
 }

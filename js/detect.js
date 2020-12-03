@@ -42,7 +42,7 @@ let anchorGenerator = (featureMapSizes, anchorSizes, anchorRatios) => {
 let detectWebCam = () => {
     detect(webcamElement).then((results) => {
         console.log(results);
-        canvas.width = webcamElement.width + 1000;
+        canvas.width = webcamElement.width;
         canvas.height = webcamElement.height;
         console.log(webcamElement.width + " " + webcamElement.height);
         ctx = canvas.getContext('2d');

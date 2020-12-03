@@ -29,6 +29,17 @@
     .chat-body:first-child {
         margin-top: 0
     }
+
+
+    .chat-body p{
+        display:inline-block;
+    }
+
+    .chat-body button{
+        border-width: 0;
+    }
+
+    
     
 
     /* the sharp of the RIGHT chatbox */
@@ -121,6 +132,9 @@
     }
     .chat-avatar .avatar {
         width: 30px;
+    }
+    .chat-bot-audio-container{
+        display: none;
     }
     .avatar {
         position: relative;
